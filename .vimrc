@@ -92,8 +92,8 @@ let Tlist_Inc_Winwidth=0
 nnoremap <C-G> :TlistToggle<CR>
 
 " Easyalign
-xmap ga <plug>(EasyAlign)
-nmap ga <plug>(EasyAlign)
+" xmap ga <plug>(EasyAlign)
+" nmap ga <plug>(EasyAlign)
 
 
 " Highlight trailing whitespace and lines longer than 80 columns.
@@ -154,4 +154,4 @@ augroup filetype
 augroup END
 
 " clang completion
-let g:clang_library_path='/usr/lib/llvm-3.8/lib'
+" let g:clang_library_path='/usr/lib/llvm-3.8/lib'
