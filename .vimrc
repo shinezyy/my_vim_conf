@@ -155,3 +155,4 @@ augroup END
 
 " clang completion
 " let g:clang_library_path='/usr/lib/llvm-3.8/lib'
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/.ycm_extra_conf.py"
