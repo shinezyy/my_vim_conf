@@ -19,6 +19,7 @@ colorscheme badwolf
 set tabstop=4
 set expandtab
 set softtabstop=4
+set shiftwidth=4
 
 "UI config :
 set number
@@ -26,7 +27,6 @@ set showcmd
 set cursorline
 set linebreak
 set hlsearch
-set shiftwidth=4
 set smartindent
 set autoindent
 set showmatch
