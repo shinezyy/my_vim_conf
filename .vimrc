@@ -9,6 +9,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 endif
 
 "color :
+set t_Co=256
 syntax enable
 set background=dark
 colorscheme badwolf
@@ -50,6 +51,7 @@ autocmd FileType verilog_systemverilog set tabstop=4
 autocmd FileType verilog_systemverilog set softtabstop=4
 autocmd FileType verilog_systemverilog set shiftwidth=4
 
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 set history=50
 
