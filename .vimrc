@@ -101,7 +101,7 @@ highlight LongLine ctermbg=DarkYellow guibg=DarkYellow
 highlight WhitespaceEOL ctermbg=DarkYellow guibg=DarkYellow
 if v:version >= 702
   " Lines longer than 80 columns.
-  au BufWinEnter * let w:m0=matchadd('LongLine', '\%>80v.\+', -1)
+  " au BufWinEnter * let w:m0=matchadd('LongLine', '\%>80v.\+', -1)
 
   " Whitespace at the end of a line. This little dance suppresses
   " whitespace that has just been typed.
@@ -111,7 +111,7 @@ if v:version >= 702
   au InsertLeave * call matchdelete(w:m2)
   au InsertLeave * let w:m1=matchadd('WhitespaceEOL', '\s\+$', -1)
 else
-  au BufRead,BufNewFile * syntax match LongLine /\%>80v.\+/
+  " au BufRead,BufNewFile * syntax match LongLine /\%>80v.\+/
   au InsertEnter * syntax match WhitespaceEOL /\s\+\%#\@<!$/
   au InsertLeave * syntax match WhitespaceEOL /\s\+$/
 endif
@@ -156,3 +156,7 @@ augroup END
 " clang completion
 " let g:clang_library_path='/usr/lib/llvm-3.8/lib'
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/.ycm_extra_conf.py"
+let g:jedi#completions_command = "<C-X>"
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set enc=utf8
+set fencs=utf8,gbk,gb2312,gb18030
