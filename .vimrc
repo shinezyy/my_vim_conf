@@ -12,8 +12,8 @@ endif
 set t_Co=256
 syntax enable
 set background=dark
-colorscheme solarized
-" colorscheme badwolf
+" colorscheme solarized
+colorscheme badwolf
 " set background=light
 " colorscheme solarized
 
