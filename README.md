@@ -1,5 +1,5 @@
 ## Thanks for
-pathogen, my vim configuration can be synced betweent multiple devices.
+pathogen, my vim configuration can be synchronized between multiple devices.
 Because of my laziness, pathogen, vim-latex, and vim-verilog is not
 organized with git submodules.
 
@@ -21,27 +21,41 @@ Then
 mv ~/.vim ~/.vim_bak
 mv ~/.vimrc ~/.vimrc_bak
 cd ~
-ln -s $vimConf/.vim ./
-ln -s $vimConf/.vimrc ./
+ln -s $vimConf/.vim .
+ln -s $vimConf/.vimrc .
 
 cd ~/.vim/bundle/
 git submodule update --init badwolf
 ```
 
-If you are scalar:
+If you are scalar (color scheme only):
 
 ```
+cd ~/.vim/bundle/
 git submodule update --init vim-scala
 ```
 
 If you are pythoner:
 
 ```
+cd ~/.vim/bundle/
 git submodule update --init jedi-vim
 sudo -H pip install jedi
 ```
 
-If you are Cpper: go to YCM's repo, and **learn** how to
-install it.
+If you use tmux and use Ctrl+A for instruction escape.
 
-If your vim does not support python, YCM's repo told you.
+```
+cd $vimConf
+git submodule update --init tmux
+cd ~
+mv ~/.tmux.conf ~/.tmux.conf_bak
+ln -s $vimConf/tmux/.tmux.conf .
+```
+
+If you are CPPer: go to [YouCompleteMe](https://github.com/Valloric/YouCompleteMe),
+and **learn** how to install and configure it.
+If your vim does not support python, YCM's Full installation guide will tell you.
+Considering that large CPP projects might not effect vim's performance,
+I do not suggest to use it for heavy projects.
+
