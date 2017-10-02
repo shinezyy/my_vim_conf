@@ -1,9 +1,3 @@
-[submodule ".vim/bundle/solarized"]
-	path = .vim/bundle/solarized
-	url = https://github.com/altercation/solarized.git
-[submodule ".vim/bundle/--force"]
-	path = .vim/bundle/--force
-	url = https://github.com/sjl/badwolf.git
 [submodule "tmux"]
 	path = tmux
 	url = https://github.com/shinezyy/.tmux.git
