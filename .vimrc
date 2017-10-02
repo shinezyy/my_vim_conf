@@ -2,6 +2,19 @@
 " runtime env :
 execute pathogen#infect()
 
+" Of course
+set nocompatible
+
+" Required Vundle setup
+filetype off
+set runtimepath+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+" bad wolf
+Bundle 'sjl/badwolf'
+
 " set nocompatible
 "remember the line
 if has("autocmd")

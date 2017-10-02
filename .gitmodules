@@ -1,24 +1,9 @@
-[submodule ".vim/bundle/YouCompleteMe"]
-	path = .vim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
 [submodule ".vim/bundle/solarized"]
 	path = .vim/bundle/solarized
 	url = https://github.com/altercation/solarized.git
-[submodule ".vim/bundle/vim-scala"]
-	path = .vim/bundle/vim-scala
-	url = https://github.com/derekwyatt/vim-scala.git
 [submodule ".vim/bundle/--force"]
 	path = .vim/bundle/--force
 	url = https://github.com/sjl/badwolf.git
-[submodule ".vim/bundle/badwolf"]
-	path = .vim/bundle/badwolf
-	url = https://github.com/sjl/badwolf.git
-[submodule ".vim/bundle/jedi-vim"]
-	path = .vim/bundle/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "tmux"]
 	path = tmux
 	url = https://github.com/shinezyy/.tmux.git
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
