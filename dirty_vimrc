@@ -19,9 +19,9 @@ filetype plugin indent on    " required
 "filetype plugin on
 
 "remember the line
-"if has("autocmd")
-"au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
+if has("autocmd")
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 "color :
 set t_Co=256
