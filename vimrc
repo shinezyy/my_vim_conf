@@ -123,7 +123,7 @@ nnoremap <leader>ic :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 
 " prevent loading questions
-let g:ycm_extra_conf_globlist = ['~/projects/dev_smt_qos/*']
+let g:ycm_extra_conf_globlist = ['~/projects/dev_smt_qos/*', '~/win_projects/dev_smt_qos/*']
 
 " The editing history per file
 if has("autocmd")
