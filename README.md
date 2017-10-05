@@ -32,8 +32,8 @@ Initiate vundle
 
 ``` shell
 
-cd ~/.vim/bundle/
-git submodule update --init Vundle.vim
+cd $vimConf
+git submodule update --init vim/bundle/Vundle.vim
 ```
 Now, you can use vundle to install vim plugins automatically....
 
@@ -64,6 +64,20 @@ Then go to
 [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 to find operations for your language. Because it really depends on your
 linux distribution and language.
+
+Here are some tips:
+
+- You'd better install/compile vim8 with python support.
+For ubuntu 14, there are some PPAs providing vim8 binary;
+For centos, I compiled it...
+- For CPPer, packages like cmake and python-dev must be installed;
+- **Very Important:** If your vim support python2,
+execute install.py with python2; The same to python3.
+- If you are not CPPer, don't add "--clang-completer" option to save time.
+
+
+After installation of YCM, installing other plugins should be much easier.
+Enter vim, switch to command mode and use *:PluginInstall* to install others.
 
 ### Tmux
 
