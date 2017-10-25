@@ -13,8 +13,11 @@ Plugin 'VundleVim/Vundle.vim'
 " bad wolf
 Plugin 'sjl/badwolf'
 
-"YCM
+" YCM
 Plugin 'Valloric/YouCompleteMe'
+
+" jedi-vim for type hint
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -122,10 +125,26 @@ nnoremap <leader>df :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>ic :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 
+let g:jedi#completions_command = "<C-l>"
+
 " prevent loading questions
-let g:ycm_extra_conf_globlist = ['~/projects/dev_smt_qos/*', '~/win_projects/dev_smt_qos/*', '~/projects/dev_pard_smt/*']
+let g:ycm_extra_conf_globlist = [
+            \ '~/projects/dev_smt_qos/*',
+            \ '~/win_projects/dev_smt_qos/*',
+            \ '~/projects/dev_pard_smt/*'
+            \]
+
+let g:ycm_filetype_specific_completion_to_disable = {
+            \ 'gitcommit': 1,
+            \ 'python': 0
+            \}
+let g:ycm_filetype_blacklist = {
+            \ 'vimshell': 1,
+            \ 'python': 0
+            \}
 
 " The editing history per file
 if has("autocmd")
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
