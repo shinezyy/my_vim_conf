@@ -126,6 +126,7 @@ nnoremap <leader>ic :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 
 let g:jedi#completions_command = "<C-l>"
+let g:jedi#popup_on_dot = 0
 
 " prevent loading questions
 let g:ycm_extra_conf_globlist = [
