@@ -132,7 +132,8 @@ let g:jedi#popup_on_dot = 0
 let g:ycm_extra_conf_globlist = [
             \ '~/projects/dev_smt_qos/*',
             \ '~/win_projects/dev_smt_qos/*',
-            \ '~/projects/dev_pard_smt/*'
+            \ '~/projects/dev_pard_smt/*',
+            \ '~/projects/Simple-TCP-Stack-UCAS-2017/*',
             \]
 
 let g:ycm_filetype_specific_completion_to_disable = {
@@ -141,8 +142,8 @@ let g:ycm_filetype_specific_completion_to_disable = {
             \}
 let g:ycm_filetype_blacklist = {
             \ 'vimshell': 1,
-            \ 'python': 0
             \}
+            "\ 'python': 0
 
 " The editing history per file
 if has("autocmd")
