@@ -129,10 +129,12 @@ let g:jedi#completions_command = "<C-l>"
 let g:jedi#popup_on_dot = 0
 
 " prevent loading questions
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf_global.py'
 let g:ycm_extra_conf_globlist = [
             \ '~/projects/dev_smt_qos/*',
             \ '~/win_projects/dev_smt_qos/*',
             \ '~/projects/dev_pard_smt/*',
+            \ '~/projects/gem5/*',
             \ '~/projects/Simple-TCP-Stack-UCAS-2017/*',
             \]
 
