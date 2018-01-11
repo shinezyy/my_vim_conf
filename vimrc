@@ -98,6 +98,7 @@ highlight WhitespaceEOL ctermbg=DarkYellow guibg=DarkYellow
 if v:version >= 702
   " Lines longer than 80 columns.
   au BufWinEnter * let w:m0=matchadd('LongLine', '\%>80v.\+', -1)
+  au BufWinEnter *.txt,*.md call matchdelete(w:m0)
 
   " Whitespace at the end of a line. This little dance suppresses
   " whitespace that has just been typed.
@@ -126,7 +127,7 @@ nnoremap <leader>ic :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 
 let g:jedi#completions_command = "<C-l>"
-let g:jedi#popup_on_dot = 0
+"let g:jedi#popup_on_dot = 0
 
 " prevent loading questions
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf_global.py'
