@@ -134,6 +134,7 @@ let g:ycm_extra_conf_globlist = [
             \ '~/win_projects/dev_smt_qos/*',
             \ '~/projects/dev_pard_smt/*',
             \ '~/projects/Simple-TCP-Stack-UCAS-2017/*',
+            \ '~/projects/inst_dep_graph/*',
             \]
 
 let g:ycm_filetype_specific_completion_to_disable = {
