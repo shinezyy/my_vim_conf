@@ -70,6 +70,7 @@ autocmd FileType verilog_systemverilog set softtabstop=4
 autocmd FileType verilog_systemverilog set shiftwidth=4
 
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead SConstruct set filetype=python
 
 set history=50
 
@@ -98,6 +99,7 @@ highlight WhitespaceEOL ctermbg=DarkYellow guibg=DarkYellow
 if v:version >= 702
   " Lines longer than 80 columns.
   au BufWinEnter * let w:m0=matchadd('LongLine', '\%>80v.\+', -1)
+  au BufWinEnter *.txt,*.md call matchdelete(w:m0)
 
   " Whitespace at the end of a line. This little dance suppresses
   " whitespace that has just been typed.
@@ -113,6 +115,7 @@ else
 endif
 
 
+
 " Encoding priorities
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set enc=utf8
@@ -126,21 +129,25 @@ nnoremap <leader>ic :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 
 let g:jedi#completions_command = "<C-l>"
-let g:jedi#popup_on_dot = 0
+"let g:jedi#popup_on_dot = 0
 
 " prevent loading questions
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf_global.py'
 let g:ycm_extra_conf_globlist = [
             \ '~/projects/dev_smt_qos/*',
             \ '~/win_projects/dev_smt_qos/*',
             \ '~/projects/dev_pard_smt/*',
+            \ '~/projects/gem5/*',
             \ '~/projects/Simple-TCP-Stack-UCAS-2017/*',
             \ '~/projects/inst_dep_graph/*',
+            \ '~/projects/dep_graph/*',
+            \ '~/open-source-proj/proto-buf-socket/*',
             \]
 
 let g:ycm_filetype_specific_completion_to_disable = {
             \ 'gitcommit': 1,
-            \ 'python': 0
             \}
+            "\ 'python': 0
 let g:ycm_filetype_blacklist = {
             \ 'vimshell': 1,
             \}
