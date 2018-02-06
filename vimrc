@@ -70,6 +70,7 @@ autocmd FileType verilog_systemverilog set softtabstop=4
 autocmd FileType verilog_systemverilog set shiftwidth=4
 
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead SConstruct set filetype=python
 
 set history=50
 
@@ -114,6 +115,7 @@ else
 endif
 
 
+
 " Encoding priorities
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set enc=utf8
@@ -137,12 +139,14 @@ let g:ycm_extra_conf_globlist = [
             \ '~/projects/dev_pard_smt/*',
             \ '~/projects/gem5/*',
             \ '~/projects/Simple-TCP-Stack-UCAS-2017/*',
+            \ '~/projects/dep_graph/*',
+            \ '~/open-source-proj/proto-buf-socket/*',
             \]
 
 let g:ycm_filetype_specific_completion_to_disable = {
             \ 'gitcommit': 1,
-            \ 'python': 0
             \}
+            "\ 'python': 0
 let g:ycm_filetype_blacklist = {
             \ 'vimshell': 1,
             \}
