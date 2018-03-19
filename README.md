@@ -60,24 +60,31 @@ cd vim/bundle/YouCompleteMe
 git submodule update --init --recursive # clone dependent modules
 ```
 
-Then go to
+**NOTE that YCM is not fully installed yet!**
+For more functions, such as C++ navigation and completion, you need to go to
 [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
-to find operations for your language. Because it really depends on your
-linux distribution and language.
+to find proper instructions for your language. Because it depends tightly on your
+linux distribution and language, these instructions are not listed here.
 
-Here are some tips:
+Here are some tips during installation of YCM:
 
 - You'd better install/compile vim8 with python support.
 For ubuntu 14, there are some PPAs providing vim8 binary;
-For centos, I compiled it...
+For centos, I compiled it from sources...
 - For CPPer, packages like cmake and python-dev must be installed;
-- **Very Important:** If your vim support python2,
+- **Very Important:** If your vim support python2
 execute install.py with python2; The same to python3.
 - If you are not CPPer, don't add "--clang-completer" option to save time.
 
 
 After installation of YCM, installing other plugins should be much easier.
-Enter vim, switch to command mode and use *:PluginInstall* to install others.
+Enter vim, switch to command mode and use command:
+
+```
+:PluginInstall
+```
+
+to install other plugins (such as jedi, and badwolf).
 
 ### Tmux
 
