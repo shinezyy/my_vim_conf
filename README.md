@@ -23,7 +23,8 @@ mv ~/.vim ~/.vim_bak
 mv ~/.vimrc ~/.vimrc_bak
 cd ~
 ln -s $vimConf/vim .vim
-ln -s $vimConf/vimrc .vimrc
+ln -s $vimConf/vimrc_py .vimrc   # if you write python only
+ln -s $vimConf/vimrc_full .vimrc   # if you write C++, go...
 ```
 
 ### Vundle
@@ -39,10 +40,14 @@ Now, you can use vundle to install vim plugins automatically....
 
 ### Plugins
 
-Jedi was recommended for pythoner before. Now YCM is recommended.
+Jedi and supertab are recommended for pythoners. If you write python only,
+just skip YCM installation.
+
+#### YCM Installation
+For Cppers, YCM is recommended.
 Because it helps completion in not only coding, but also many other editing
 stuff, although it's heavy...
-**I do not recommend to install YCM with vundle, especially in China...**
+**I do not recommend to install automatically YCM with vundle, especially in China...**
 Because of poor accessibility to github,
 the download rate is usually lower than 200 KiB/s.
 In consequence, automated installation might be failed, and a manual
@@ -76,6 +81,7 @@ For centos, I compiled it from sources...
 execute install.py with python2; The same to python3.
 - If you are not CPPer, don't add "--clang-completer" option to save time.
 
+#### Other Plugins Installation
 
 After installation of YCM, installing other plugins should be much easier.
 Enter vim, switch to command mode and use command:
