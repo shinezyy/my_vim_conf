@@ -97,8 +97,8 @@ set foldlevel=100 " 设置折叠层数为 1
 highlight LongLine ctermbg=DarkYellow guibg=DarkYellow
 highlight WhitespaceEOL ctermbg=DarkYellow guibg=DarkYellow
 if v:version >= 702
-  " Lines longer than 80 columns.
-  au BufWinEnter * let w:m0=matchadd('LongLine', '\%>80v.\+', -1)
+  " Lines longer than 120 columns.
+  au BufWinEnter * let w:m0=matchadd('LongLine', '\%>120v.\+', -1)
   au BufWinEnter *.txt,*.md call matchdelete(w:m0)
 
   " Whitespace at the end of a line. This little dance suppresses
@@ -109,7 +109,7 @@ if v:version >= 702
   au InsertLeave * call matchdelete(w:m2)
   au InsertLeave * let w:m1=matchadd('WhitespaceEOL', '\s\+$', -1)
 else
-  au BufRead,BufNewFile * syntax match LongLine /\%>80v.\+/
+  au BufRead,BufNewFile * syntax match LongLine /\%>120v.\+/
   au InsertEnter * syntax match WhitespaceEOL /\s\+\%#\@<!$/
   au InsertLeave * syntax match WhitespaceEOL /\s\+$/
 endif
@@ -129,18 +129,18 @@ nnoremap <leader>ic :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 
 let g:jedi#completions_command = "<C-l>"
-"let g:jedi#popup_on_dot = 0
+let g:jedi#popup_on_dot = 0
 
 " prevent loading questions
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf_global.py'
 let g:ycm_extra_conf_globlist = [
-            \ '~/projects/dev_smt_qos/*',
-            \ '~/win_projects/dev_smt_qos/*',
-            \ '~/projects/dev_pard_smt/*',
+            \ '~/projects/less-wb/*',
+            \ '~/projects/nb/*',
             \ '~/projects/gem5/*',
             \ '~/projects/Simple-TCP-Stack-UCAS-2017/*',
             \ '~/projects/inst_dep_graph/*',
             \ '~/projects/dep_graph/*',
+            \ '~/projects/forwardflow/*',
             \ '~/open-source-proj/proto-buf-socket/*',
             \]
 
@@ -158,3 +158,4 @@ if has("autocmd")
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+autocmd Bufenter Makefrag* set syntax=make
