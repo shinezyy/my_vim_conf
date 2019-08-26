@@ -145,6 +145,7 @@ nnoremap <leader>dc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>df :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>ic :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>fi :YcmCompleter FixIt<CR>
 
 let g:jedi#completions_command = "<C-l>"
 let g:jedi#popup_on_dot = 0
@@ -160,6 +161,7 @@ let g:ycm_extra_conf_globlist = [
             \ '~/projects/dep_graph/*',
             \ '~/projects/forwardflow/*',
             \ '~/open-source-proj/proto-buf-socket/*',
+            \ '/work/ff/*',
             \]
 
 let g:ycm_filetype_specific_completion_to_disable = {
@@ -174,3 +176,6 @@ let g:ycm_filetype_blacklist = {
 autocmd Bufenter Makefrag* set syntax=make
 
 set laststatus=0 ruler
+
+let g:ycm_use_clangd = 0
+let g:ycm_always_populate_location_list = 1
