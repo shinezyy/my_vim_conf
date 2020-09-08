@@ -2,12 +2,14 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+" set rtp+=~/.vim/bundle/Vundle.vim
 " call plug#begin("~/.neovim/plugged")
-call plug#begin('~/.vim/bundle')
-"
-" bad wolf
-Plug 'sjl/badwolf'
+
+call plug#begin('/work/my_vim_conf/neovim/plug')
+
+
+
+
 
 " bad wolf
 Plug 'sjl/badwolf'
@@ -18,38 +20,9 @@ Plug 'Valloric/YouCompleteMe'
 " jedi-vim for type hint
 Plug 'davidhalter/jedi-vim'
 
-
-" Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins', 'for': 'scala'}
-" Plug 'roxma/nvim-yarp'
-" Plug 'roxma/vim-hug-neovim-rpc'
-" Plug 'cloudhead/neovim-fuzzy'
-" Plug 'neomake/neomake'
-" Plug 'ervandew/supertab'
-
-"Code completion with Deoplete - enabled by ensime
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#sources={}
-" let g:deoplete#sources._=['buffer', 'member', 'tag',
-"             \ 'file', 'omni', 'ultisnips']
-" let g:deoplete#omni#input_patterns={}
-" let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
-" 
-" let maplocalleader=";"
-" nnoremap <localleader>t :EnType<CR>
-" au FileType scala nnoremap <localleader>df :EnDeclaration<CR>
-" 
-" autocmd BufWritePost *.scala silent :EnTypeCheck
-" 
 " " Initialize plugin system
 call plug#end()            " required
-" 
+"
 " " Use deoplete
 " let g:deoplete#enable_at_startup = 1
 " " fuzzy finder with ctrl-p
@@ -172,6 +145,7 @@ nnoremap <leader>dc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>df :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>ic :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>fi :YcmCompleter FixIt<CR>
 
 let g:jedi#completions_command = "<C-l>"
 let g:jedi#popup_on_dot = 0
@@ -187,6 +161,8 @@ let g:ycm_extra_conf_globlist = [
             \ '~/projects/dep_graph/*',
             \ '~/projects/forwardflow/*',
             \ '~/open-source-proj/proto-buf-socket/*',
+            \ '/work/ff/*',
+            \ '/work/lockless-exp/*',
             \]
 
 let g:ycm_filetype_specific_completion_to_disable = {
@@ -201,3 +177,6 @@ let g:ycm_filetype_blacklist = {
 autocmd Bufenter Makefrag* set syntax=make
 
 set laststatus=0 ruler
+
+let g:ycm_use_clangd = 0
+let g:ycm_always_populate_location_list = 1
