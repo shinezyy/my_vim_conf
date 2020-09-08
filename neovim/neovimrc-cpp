@@ -162,6 +162,7 @@ let g:ycm_extra_conf_globlist = [
             \ '~/projects/forwardflow/*',
             \ '~/open-source-proj/proto-buf-socket/*',
             \ '/work/ff/*',
+            \ '/work/lockless-exp/*',
             \]
 
 let g:ycm_filetype_specific_completion_to_disable = {
