@@ -3,31 +3,83 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/.vim/bundle')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" call plug#begin("~/.neovim/plugged")
+call plug#begin('~/.vim/bundle')
+"
+" bad wolf
+Plug 'sjl/badwolf'
 
 " bad wolf
-Plugin 'sjl/badwolf'
+Plug 'sjl/badwolf'
 
 " YCM
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " jedi-vim for type hint
-Plugin 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
+
+" Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins', 'for': 'scala'}
+" Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
+" Plug 'cloudhead/neovim-fuzzy'
+" Plug 'neomake/neomake'
+" Plug 'ervandew/supertab'
+
+"Code completion with Deoplete - enabled by ensime
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#sources={}
+" let g:deoplete#sources._=['buffer', 'member', 'tag',
+"             \ 'file', 'omni', 'ultisnips']
+" let g:deoplete#omni#input_patterns={}
+" let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
+" 
+" let maplocalleader=";"
+" nnoremap <localleader>t :EnType<CR>
+" au FileType scala nnoremap <localleader>df :EnDeclaration<CR>
+" 
+" autocmd BufWritePost *.scala silent :EnTypeCheck
+" 
+" " Initialize plugin system
+call plug#end()            " required
+" 
+" " Use deoplete
+" let g:deoplete#enable_at_startup = 1
+" " fuzzy finder with ctrl-p
+" nnoremap <C-p> :FuzzyOpen<CR>
+" " easier split navigations
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
+" "Linting with neomake
+" let g:neomake_sbt_maker = {
+"       \ 'exe': 'sbt',
+"       \ 'args': ['-Dsbt.log.noformat=true', 'compile'],
+"       \ 'append_file': 0,
+"       \ 'auto_enabled': 1,
+"       \ 'output_stream': 'stdout',
+"       \ 'errorformat':
+"           \ '%E[%trror]\ %f:%l:\ %m,' .
+"             \ '%-Z[error]\ %p^,' .
+"             \ '%-C%.%#,' .
+"             \ '%-G%.%#'
+"      \ }
+" let g:neomake_enabled_makers = ['sbt']
+" let g:neomake_verbose=3
+" Neomake on text change
+" autocmd InsertLeave,TextChanged * update | Neomake! sbt
 
 
 " color :
 set t_Co=256
-syntax enable
 set background=dark
 " colorscheme solarized
 colorscheme badwolf
@@ -56,22 +108,9 @@ set incsearch
 set ruler
 set backspace=2
 "set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s
-
-autocmd FileType verilog set tabstop=4
-autocmd FileType verilog set softtabstop=4
-autocmd FileType verilog set shiftwidth=4
-
-autocmd FileType yaml set tabstop=2
-autocmd FileType yaml set softtabstop=2
-autocmd FileType yaml set shiftwidth=2
-
-autocmd FileType systemverilog set tabstop=4
-autocmd FileType systemverilog set softtabstop=4
-autocmd FileType systemverilog set shiftwidth=4
-
-autocmd FileType verilog_systemverilog set tabstop=4
-autocmd FileType verilog_systemverilog set softtabstop=4
-autocmd FileType verilog_systemverilog set shiftwidth=4
+autocmd FileType scala set tabstop=2
+autocmd FileType scala set softtabstop=2
+autocmd FileType scala set shiftwidth=2
 
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead SConstruct set filetype=python
@@ -91,19 +130,13 @@ set foldcolumn=0 " 设置折叠区域的宽度
 setlocal foldlevel=100 " 设置折叠层数为 1
 set foldlevel=100 " 设置折叠层数为 1
 
-
-" Easyalign
-" xmap ga <plug>(EasyAlign)
-" nmap ga <plug>(EasyAlign)
-
-
-" Highlight trailing whitespace and lines longer than 80 columns.
+" Highlight trailing whitespace and lines longer than 120 columns.
 highlight LongLine ctermbg=DarkYellow guibg=DarkYellow
 highlight WhitespaceEOL ctermbg=DarkYellow guibg=DarkYellow
 if v:version >= 702
   " Lines longer than 120 columns.
   au BufWinEnter * let w:m0=matchadd('LongLine', '\%>120v.\+', -1)
-  au BufWinEnter *.txt,*.md,*.csv,*.log call matchdelete(w:m0)
+  au BufWinEnter *.txt,*.md call matchdelete(w:m0)
 
   " Whitespace at the end of a line. This little dance suppresses
   " whitespace that has just been typed.
@@ -118,12 +151,20 @@ else
   au InsertLeave * syntax match WhitespaceEOL /\s\+$/
 endif
 
-
-
 " Encoding priorities
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set enc=utf8
 set fencs=utf8,gbk,gb2312,gb18030
+
+" The editing history per file
+if has("autocmd")
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+"Super tab direciton
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+nnoremap <C-p> :FuzzyOpen<CR>
 
 " shortcuts for YCM
 let mapleader=";"
@@ -146,6 +187,7 @@ let g:ycm_extra_conf_globlist = [
             \ '~/projects/dep_graph/*',
             \ '~/projects/forwardflow/*',
             \ '~/open-source-proj/proto-buf-socket/*',
+            \ '~/projects/smt-cache-parallel/*',
             \]
 
 let g:ycm_filetype_specific_completion_to_disable = {
@@ -157,9 +199,6 @@ let g:ycm_filetype_blacklist = {
             \}
             "\ 'python': 0
 
-" The editing history per file
-if has("autocmd")
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-
 autocmd Bufenter Makefrag* set syntax=make
+
+set laststatus=0 ruler
