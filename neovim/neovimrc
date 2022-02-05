@@ -9,9 +9,6 @@ call plug#begin('~/.vim/bundle')
 " bad wolf
 Plug 'sjl/badwolf'
 
-" bad wolf
-Plug 'sjl/badwolf'
-
 " YCM
 Plug 'Valloric/YouCompleteMe'
 

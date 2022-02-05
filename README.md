@@ -1,98 +1,66 @@
-## Thanks for
-vundle, my vim configuration can be synchronized between multiple devices.
+# Setup NEOVIM and tmux quickly
 
-This repository is migrated from pathogen to vundle, which is able to
-install plugins automatically. **NOTE: Now vundle must be initiated first.**
+Now I migrate to neovim for asynchronous support (although it is support in vim now) and extensibility:
+- When writing Python with vim, `np.` often stucks for a few seconds, especially on a server with HDD.
+- It is similar for other heavy extensions like YCM.
 
-## This REPO is for
+## old readme for VIM
+[old_README.md](old readme here)
 
-these people:
+## Install neovim
 
-- first, of course, myself
-- new vimer, who does not have enough experience or time to collect some useful
-plugins themselves.
-
-## How to
+Go to [https://github.com/neovim/neovim/releases/latest](latest stable release),
+download `nvim.appimage` with browser, wget, or anything you like.
+``` shell
+# Linux:
+chmod u+x nvim.appimage
+mv nvim.appimage ~/.local/bin  # assume that ~/.local/bin is in $PATH
+```
 
 Let $vimConf be where you store this repository, and git clone this repo to
-$vimConf.Then link vim and vimrc to your home:
-
+$vimConf.
 ``` shell
+git clone https://github.com/shinezyy/my_vim_conf.git $vimConf
+```
 
-mv ~/.vim ~/.vim_bak
-mv ~/.vimrc ~/.vimrc_bak
+Link config file to
+``` shell
+mkdir -p ~/.config/nvim  # create config dir for neovim
+cd ~/.config/nvim
+ln -s $vimConf/neovim/neovimrc ./init.vim
+
 cd ~
+mv ~/.vim ~/.vim_bak
 ln -s $vimConf/vim .vim
-ln -s $vimConf/vimrc_py .vimrc   # if you write python only
-ln -s $vimConf/vimrc_full .vimrc   # if you write C++, go...
 ```
 
-### Vundle
-
-Initiate vundle
-
+Install vimPlug:
 ``` shell
-
-cd $vimConf
-git submodule update --init vim/bundle/Vundle.vim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
-Now, you can use vundle to install vim plugins automatically....
 
-### Plugins
-
-Jedi and supertab are recommended for pythoners. If you write python only,
-just skip YCM installation.
-
-#### YCM Installation
-For Cppers, YCM is recommended.
-Because it helps completion in not only coding, but also many other editing
-stuff, although it's heavy...
-**I do not recommend to install automatically YCM with vundle, especially in China...**
-Because of poor accessibility to github,
-the download rate is usually lower than 200 KiB/s.
-In consequence, automated installation might be failed, and a manual
-installation tells you where you failed...
-To avoid this, an git proxy or manual installation is suggested.
-
-I'll show you how to install it manually:
-
+Install pynvim to enable jedi and YCM:
 ``` shell
-
-cd $vimConf
-git submodule update --init vim/bundle/YouCompleteMe # clone YCM
-
-cd vim/bundle/YouCompleteMe
-git submodule update --init --recursive # clone dependent modules
+python3 -m pip install --user --upgrade pynvim
 ```
 
-**NOTE that YCM is not fully installed yet!**
-For more functions, such as C++ navigation and completion, you need to go to
-[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
-to find proper instructions for your language. Because it depends tightly on your
-linux distribution and language, these instructions are not listed here.
 
-Here are some tips during installation of YCM:
-
-- You'd better install/compile vim8 with python support.
-For ubuntu 14, there are some PPAs providing vim8 binary;
-For centos, I compiled it from sources...
-- For CPPer, packages like cmake and python-dev must be installed;
-- **Very Important:** If your vim support python2
-execute install.py with python2; The same to python3.
-- If you are not CPPer, don't add "--clang-completer" option to save time.
-
-#### Other Plugins Installation
-
-After installation of YCM, installing other plugins should be much easier.
-Enter vim, switch to command mode and use command:
-
+If you do not need YCM (C++ support),
+Then comment out the following line in ~/.config/nvim/init.vim
 ```
-:PluginInstall
+Plug 'davidhalter/jedi-vim'
 ```
 
-to install other plugins (such as jedi, and badwolf).
+Open `nvim`, and input command `:PlugInstall`, it will git clone jedi and YCM for you.
 
-### Tmux
+If you need YCM (C++ support), you should further install YCM with clang support
+``` shell
+cd $vimConf/vim/bundle/YouCompleteMe
+./install.py --clang-completer --verbose
+```
+
+# Tmux
 
 If you use tmux and use Ctrl+A for instruction escape.
 
@@ -103,4 +71,3 @@ cd ~
 mv ~/.tmux.conf ~/.tmux.conf_bak
 ln -s $vimConf/tmux/.tmux.conf .
 ```
-
