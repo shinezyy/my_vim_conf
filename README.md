@@ -5,11 +5,11 @@ Now I migrate to neovim for asynchronous support (although it is support in vim 
 - It is similar for other heavy extensions like YCM.
 
 ## old readme for VIM
-[old_README.md](old readme here)
+[old readme here](old_README.md)
 
 ## Install neovim
 
-Go to [https://github.com/neovim/neovim/releases/latest](latest stable release),
+Go to [latest stable release](https://github.com/neovim/neovim/releases/latest),
 download `nvim.appimage` with browser, wget, or anything you like.
 ``` shell
 # Linux:
