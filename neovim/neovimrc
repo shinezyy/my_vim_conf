@@ -10,7 +10,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'sjl/badwolf'
 
 " YCM
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " jedi-vim for type hint
 Plug 'davidhalter/jedi-vim'

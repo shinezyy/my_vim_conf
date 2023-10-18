@@ -5,11 +5,11 @@ Now I migrate to neovim for asynchronous support (although it is support in vim 
 - It is similar for other heavy extensions like YCM.
 
 ## old readme for VIM
-[old_README.md](old readme here)
+[old readme here](old_README.md)
 
 ## Install neovim
 
-Go to [https://github.com/neovim/neovim/releases/latest](latest stable release),
+Go to [latest stable release](https://github.com/neovim/neovim/releases/latest),
 download `nvim.appimage` with browser, wget, or anything you like.
 ``` shell
 # Linux:
@@ -17,7 +17,7 @@ chmod u+x nvim.appimage
 mv nvim.appimage ~/.local/bin  # assume that ~/.local/bin is in $PATH
 ```
 
-Let $vimConf be where you store this repository, and git clone this repo to
+Let $vimConf be the abs path where you store this repository, and git clone this repo to
 $vimConf.
 ``` shell
 git clone https://github.com/shinezyy/my_vim_conf.git $vimConf
@@ -46,13 +46,13 @@ python3 -m pip install --user --upgrade pynvim
 ```
 
 
-If you do not need YCM (C++ support),
-Then comment out the following line in ~/.config/nvim/init.vim
+If you need YCM (C++ support),
+Then uncomment the following line in ~/.config/nvim/init.vim
 ```
-Plug 'davidhalter/jedi-vim'
+" Plug 'Valloric/YouCompleteMe'
 ```
 
-Open `nvim`, and input command `:PlugInstall`, it will git clone jedi and YCM for you.
+Open `nvim`, and input command `:PlugInstall`, it will git clone jedi ( and YCM ) for you.
 
 If you need YCM (C++ support), you should further install YCM with clang support
 ``` shell
