@@ -1,11 +1,7 @@
 # Setup NEOVIM and tmux quickly
 
 Now I migrate to neovim for asynchronous support (although it is support in vim now) and extensibility:
-- When writing Python with vim, `np.` often stucks for a few seconds, especially on a server with HDD.
-- It is similar for other heavy extensions like YCM.
-
-## old readme for VIM
-[old readme here](old_README.md)
+I use lazy.nvim to manage plugins.
 
 ## Install neovim
 
@@ -14,51 +10,32 @@ download `nvim.appimage` with browser, wget, or anything you like.
 ``` shell
 # Linux:
 chmod u+x nvim.appimage
-mv nvim.appimage ~/.local/bin  # assume that ~/.local/bin is in $PATH
+nvim.appimage --appimage-extract
+mkdir -p ~/.local/bin
+mv squashfs-root ~/.local/bin/neovim  # assume that ~/.local/bin is in $PATH
+echo "export PATH=$HOME/.local/neovim:$PATH" >> ~/.zshrc
 ```
 
-Let $vimConf be the abs path where you store this repository, and git clone this repo to
-$vimConf.
-``` shell
-git clone https://github.com/shinezyy/my_vim_conf.git $vimConf
-```
 
-Link config file to
+## Plugins
+
 ``` shell
-mkdir -p ~/.config/nvim  # create config dir for neovim
+git clone https://github.com/shinezyy/my_vim_conf.git ~/projects/my_vim_conf
+mkdir -p ~/.config/nvim/lua/config
+mkdir -p ~/.config/nvim/lua/plugins
+echo "require("config.lazy")" > ~/.config/nvim/init.lua
+
 cd ~/.config/nvim
-ln -s $vimConf/neovim/neovimrc ./init.vim
+ln -sf ~/projects/my_vim_conf/neovim/lazy-lock.json .
+ln -sf ~/projects/my_vim_conf/neovim/lazy.lua ./lua/config/lazy.lua
+ln -sf ~/projects/my_vim_conf/neovim/colorscheme.lua ./lua/plugins/colorscheme.lua
 
-cd ~
-mv ~/.vim ~/.vim_bak
-ln -s $vimConf/vim .vim
 ```
 
-Install vimPlug:
-``` shell
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-```
+### install node for copilot
 
-Install pynvim to enable jedi and YCM:
-``` shell
-python3 -m pip install --user --upgrade pynvim
-```
+https://nodejs.org/en/download/package-manager
 
-
-If you need YCM (C++ support),
-Then uncomment the following line in ~/.config/nvim/init.vim
-```
-" Plug 'Valloric/YouCompleteMe'
-```
-
-Open `nvim`, and input command `:PlugInstall`, it will git clone jedi ( and YCM ) for you.
-
-If you need YCM (C++ support), you should further install YCM with clang support
-``` shell
-cd $vimConf/vim/bundle/YouCompleteMe
-./install.py --clang-completer --verbose
-```
 
 # Tmux
 
