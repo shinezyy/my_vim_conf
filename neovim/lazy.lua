@@ -83,6 +83,8 @@ require("lazy").setup({
           end,
         })
 
+        require'lspconfig'.jedi_language_server.setup{}
+
         require("copilot").setup({
           suggestion = { enabled = false },
           panel = { enabled = false },
