@@ -23,7 +23,7 @@ echo "export PATH=$HOME/.local/neovim:$PATH" >> ~/.zshrc
 git clone https://github.com/shinezyy/my_vim_conf.git ~/projects/my_vim_conf
 mkdir -p ~/.config/nvim/lua/config
 mkdir -p ~/.config/nvim/lua/plugins
-echo "require("config.lazy")" > ~/.config/nvim/init.lua
+echo 'require("config.lazy")' > ~/.config/nvim/init.lua
 
 cd ~/.config/nvim
 ln -sf ~/projects/my_vim_conf/neovim/lazy-lock.json .
