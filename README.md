@@ -27,8 +27,10 @@ echo 'require("config.lazy")' > ~/.config/nvim/init.lua
 
 cd ~/.config/nvim
 ln -sf ~/projects/my_vim_conf/neovim/lazy-lock.json .
-ln -sf ~/projects/my_vim_conf/neovim/lazy.lua ./lua/config/lazy.lua
-ln -sf ~/projects/my_vim_conf/neovim/colorscheme.lua ./lua/plugins/colorscheme.lua
+mv ./lua/config ./lua/config_bak
+ln -sf ~/projects/my_vim_conf/neovim/config ./lua/config
+mv ./lua/plugins ./lua/plugins_bak
+ln -sf ~/projects/my_vim_conf/neovim/plugins /lua/plugins
 
 ```
 
