@@ -26,11 +26,12 @@ mkdir -p ~/.config/nvim/lua/plugins
 echo 'require("config.lazy")' > ~/.config/nvim/init.lua
 
 cd ~/.config/nvim
+mv lazy-lock.json lazy-lock.json_bak
 ln -sf ~/projects/my_vim_conf/neovim/lazy-lock.json .
 mv ./lua/config ./lua/config_bak
 ln -sf ~/projects/my_vim_conf/neovim/config ./lua/config
 mv ./lua/plugins ./lua/plugins_bak
-ln -sf ~/projects/my_vim_conf/neovim/plugins /lua/plugins
+ln -sf ~/projects/my_vim_conf/neovim/plugins ./lua/plugins
 
 ```
 
