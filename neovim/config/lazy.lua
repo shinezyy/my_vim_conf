@@ -106,6 +106,20 @@ require("lazy").setup({
               behavior = cmp.ConfirmBehavior.Replace,
               select = false,
             }),
+            ['<Tab>'] = function(fallback)
+              if cmp.visible() then
+                cmp.select_next_item() -- Select the next completion item
+              else
+                fallback() -- Use default behavior (e.g., inserting a tab character)
+              end
+            end,
+            ['<S-Tab>'] = function(fallback)
+              if cmp.visible() then
+                cmp.select_prev_item() -- Select the previous completion item
+              else
+                fallback() -- Use default behavior
+              end
+            end,
           }),
         })
 
