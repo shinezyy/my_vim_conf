@@ -83,6 +83,14 @@ require("lazy").setup({
           end,
         })
 
+        vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+          pattern = "*.inc",
+          callback = function(args)
+            -- Set filetype to 'cpp' or 'c' based on your project
+            vim.bo[args.buf].filetype = "c"
+          end,
+        })
+
         require'lspconfig'.jedi_language_server.setup{}
 
         require("copilot").setup({
@@ -143,6 +151,25 @@ require("lazy").setup({
       "neovim/nvim-lspconfig",
       event = { "BufReadPre", "BufNewFile" },
     },
+    {
+      'cameron-wags/rainbow_csv.nvim',
+      config = true,
+      ft = {
+        'csv',
+        'tsv',
+        'csv_semicolon',
+        'csv_whitespace',
+        'csv_pipe',
+        'rfc_csv',
+        'rfc_semicolon'
+      },
+      cmd = {
+        'RainbowDelim',
+        'RainbowDelimSimple',
+        'RainbowDelimQuoted',
+        'RainbowMultiDelim'
+      }
+    },
 
     { import = "plugins" },
   },
@@ -179,3 +206,10 @@ require("lazy").setup({
 
 vim.opt.mouse = ""
 vim.g.autoformat = false
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
