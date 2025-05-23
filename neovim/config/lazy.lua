@@ -19,7 +19,7 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "plugins.colorscheme" },
-    { import = "plugins.copilot_related" },
+    -- { import = "plugins.copilot_related" ,lazy = true },
     {
       "scalameta/nvim-metals",
       dependencies = {
@@ -98,7 +98,7 @@ require("lazy").setup({
 
         cmp.setup({
           sources = {
-            { name = "copilot", enabled = use_copilot },
+            use_copilot and { name = "copilot" } or {},
             { name = "nvim_lsp" },
             { name = "path" },
           },
