@@ -16,15 +16,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    {
-      "zbirenbaum/copilot-cmp",
-      config = function()
-        require("copilot_cmp").setup()
-      end,
-    },
-    { "zbirenbaum/copilot.lua" },
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    { import = "plugins.colorscheme" },
+    { import = "plugins.copilot_related" },
     {
       "scalameta/nvim-metals",
       dependencies = {
@@ -93,17 +88,17 @@ require("lazy").setup({
 
         require'lspconfig'.jedi_language_server.setup{}
 
-        require("copilot").setup({
-          suggestion = { enabled = false },
-          panel = { enabled = false },
-        })
-        require("copilot_cmp").setup()
-
+        local use_copilot = false
+        -- Conditionally import copilot_related.lua if use_copilot is true
+        if use_copilot then
+          require("plugins.copilot_related")
+        end
+        
         local cmp = require("cmp")
 
         cmp.setup({
           sources = {
-            { name = "copilot" },
+            { name = "copilot", enabled = use_copilot },
             { name = "nvim_lsp" },
             { name = "path" },
           },
@@ -171,7 +166,6 @@ require("lazy").setup({
       }
     },
 
-    { import = "plugins" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
