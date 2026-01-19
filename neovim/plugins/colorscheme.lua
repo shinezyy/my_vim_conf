@@ -1,12 +1,2 @@
-return {
-  -- add badwolf
-  { "sjl/badwolf" },
-
-  -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "badwolf",
-    },
-  },
-}
+-- colorscheme 配置已移至 lazy.lua
+return {}
